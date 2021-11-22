@@ -1,18 +1,18 @@
 const Home = () => {
 
-    const handleClick = (name) => {
-        console.log('hello' + name);
-    }
+    const [name, setName] = useState('mario');
+    const [age,  setAge] = useState(25);
 
-    const handleClick2 = (e) => {
-        console.log('hello', e);
+    const handleClick = () => {
+        setName('Luigi');
+        setAge(30);
     }
-
+    
     return ( 
         <div className="home">
             <h2>Homepage</h2>
-            <button onClick={(e) => handleClick('John Smith', e)}>Click me</button>
-            <button onClick={handleClick2}>Click 2</button>
+            <p>{ name } is { age } years old.</p>
+            <button onClick={handleClick}>Click me</button>
         </div>
      );
 }

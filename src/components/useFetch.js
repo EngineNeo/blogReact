@@ -9,7 +9,9 @@ const useFetch = (url) => {
     //start jsonserver
     //npx json-server --watch data/db.json --port 8000
     useEffect(() => {
-        fetch(url)
+        const abortCont = new AbortController();
+
+        fetch(url, { signal : abortCont.signal})
           .then(res => {
               if(!res.ok) {
                   throw Error('Data was unable to be fetched')
@@ -22,9 +24,14 @@ const useFetch = (url) => {
               setError(null);
           })
           .catch (err => {
+              if (err.name === 'AbortError') {
+                  console.log('fetch aborted');
+              } else
               setisLoading(false);
               setError(err.message)
           })
+
+          return () => abortCont.abort();
     }, [url]);
 
     return { data, isLoading, error }

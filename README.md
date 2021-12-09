@@ -1,3 +1,10 @@
 # blogReact
 
-A dynamic blog created with React
+![blogReact](readmeimg.PNG)
+
+A functional dynamic blog created with React
+
+#### Features
+* Displaying blogs
+* Adding blogs
+* Deleting blogs
